@@ -45,6 +45,7 @@ class BirdWeather {
     public static function register_settings() {
         bw_log('Registering settings...');
         
+        // Register token setting
         register_setting(
             'bw_settings_group',
             'bw_station_token',
@@ -55,6 +56,17 @@ class BirdWeather {
             ]
         );
 
+        // Register debug setting
+        register_setting(
+            'bw_settings_group',
+            'bw_enable_debug',
+            [
+                'type' => 'boolean',
+                'default' => false
+            ]
+        );
+
+        // Add settings sections
         add_settings_section(
             'bw_main_section',
             __('Station Configuration', 'birdweather'),
@@ -62,10 +74,19 @@ class BirdWeather {
             'birdweather-settings'
         );
 
+        // Add settings fields
         add_settings_field(
             'bw_station_token',
             __('Station Token', 'birdweather'),
             [BirdWeather_Settings::class, 'render_token_field'],
+            'birdweather-settings',
+            'bw_main_section'
+        );
+
+        add_settings_field(
+            'bw_enable_debug',
+            __('Debug Mode', 'birdweather'),
+            [BirdWeather_Settings::class, 'render_debug_field'],
             'birdweather-settings',
             'bw_main_section'
         );

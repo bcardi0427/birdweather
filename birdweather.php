@@ -18,7 +18,7 @@ define('BW_PLUGIN_URL', plugin_dir_url(__FILE__));
 // Debug helper
 if (!function_exists('bw_log')) {
     function bw_log($message) {
-        if (WP_DEBUG === true) {
+        if (WP_DEBUG === true && get_option('bw_enable_debug', false)) {
             if (is_array($message) || is_object($message)) {
                 error_log('BirdWeather Debug: ' . print_r($message, true));
             } else {

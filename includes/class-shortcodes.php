@@ -78,9 +78,12 @@ class BirdWeather_Shortcodes {
             <ul>
             <?php foreach ($data['detections'] as $detection): ?>
                 <li class="bw-detection-item">
-                    <span class="detection-species"><?php echo esc_html($detection['commonName']); ?></span>
+                    <span class="detection-species"><?php
+                        bw_log('Detection data: ' . print_r($detection, true));
+                        echo esc_html($detection['species']['commonName'] ?? $detection['commonName'] ?? 'Unknown');
+                    ?></span>
                     <span class="detection-time">
-                        <?php echo esc_html(human_time_diff(strtotime($detection['timestamp'])) . ' ago'); ?>
+                        <?php echo esc_html(human_time_diff(strtotime($detection['timestamp'] ?? $detection['detectedAt'])) . ' ago'); ?>
                     </span>
                 </li>
             <?php endforeach; ?>

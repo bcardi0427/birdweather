@@ -45,6 +45,8 @@ class BirdWeather_API_Client {
         $body = wp_remote_retrieve_body($response);
         $data = json_decode($body, true);
 
+        bw_log('Observations response: ' . print_r($data, true));
+
         if (!$data || !isset($data['success']) || !$data['success']) {
             return new WP_Error('api_error', 'Could not fetch bird data');
         }
@@ -121,7 +123,9 @@ class BirdWeather_API_Client {
         $body = wp_remote_retrieve_body($response);
         $data = json_decode($body, true);
 
-        if (!$data || !isset($data['success']) || !$data['success']) {
+        bw_log('Recent detections response: ' . print_r($data, true));
+
+        if (!$data || !isset($data['success']) || !$data['success'] || !isset($data['detections'])) {
             return new WP_Error('api_error', 'Could not fetch detection data');
         }
 
