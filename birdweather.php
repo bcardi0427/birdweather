@@ -3,7 +3,7 @@
  * Plugin Name: BirdWeather Integration
  * Description: Display BirdWeather station data in WordPress
  * Version: 1.0.0
- * Author: Your Name
+ * Author: Gerald Haygood
  * Text Domain: birdweather
  */
 

@@ -6,7 +6,109 @@ class BirdWeather_Shortcodes {
         self::$api = new BirdWeather_API_Client();
         add_shortcode('bw_observations', [self::class, 'render_observations']);
         add_shortcode('bw_location', [self::class, 'render_location']);
+        add_shortcode('bw_top_species', [self::class, 'render_top_species']);
+        add_shortcode('bw_recent_detections', [self::class, 'render_recent_detections']);
+        add_shortcode('bw_period_stats', [self::class, 'render_period_stats']);
         add_action('wp_enqueue_scripts', [self::class, 'add_styles']);
+    }
+
+    public static function render_top_species($atts) {
+        $atts = shortcode_atts([
+            'period' => 'day',
+            'limit' => 10,
+            'sort' => 'top',
+            'order' => 'desc'
+        ], $atts);
+
+        $data = self::$api->get_top_species(
+            $atts['period'],
+            intval($atts['limit']),
+            $atts['sort'],
+            $atts['order']
+        );
+
+        if (is_wp_error($data)) {
+            return sprintf('<div class="bw-error">%s</div>',
+                esc_html($data->get_error_message())
+            );
+        }
+
+        ob_start(); ?>
+        <div class="bw-species-list">
+            <h3>Top Species - <?php echo esc_html(ucfirst($atts['period'])); ?></h3>
+            <ul>
+            <?php foreach ($data['species'] as $species): ?>
+                <li class="bw-species-item">
+                    <span class="species-name"><?php echo esc_html($species['commonName']); ?></span>
+                    <span class="species-count"><?php
+                        echo esc_html(sprintf(
+                            _n('%d detection', '%d detections',
+                            $species['detections']['total'], 'birdweather'),
+                            $species['detections']['total']
+                        ));
+                    ?></span>
+                </li>
+            <?php endforeach; ?>
+            </ul>
+        </div>
+        <?php
+        return ob_get_clean();
+    }
+
+    public static function render_recent_detections($atts) {
+        $atts = shortcode_atts([
+            'limit' => 10,
+            'species' => ''
+        ], $atts);
+
+        $data = self::$api->get_recent_detections(
+            intval($atts['limit']),
+            $atts['species']
+        );
+
+        if (is_wp_error($data)) {
+            return sprintf('<div class="bw-error">%s</div>',
+                esc_html($data->get_error_message())
+            );
+        }
+
+        ob_start(); ?>
+        <div class="bw-detections-list">
+            <h3>Recent Detections</h3>
+            <ul>
+            <?php foreach ($data['detections'] as $detection): ?>
+                <li class="bw-detection-item">
+                    <span class="detection-species"><?php echo esc_html($detection['commonName']); ?></span>
+                    <span class="detection-time">
+                        <?php echo esc_html(human_time_diff(strtotime($detection['timestamp'])) . ' ago'); ?>
+                    </span>
+                </li>
+            <?php endforeach; ?>
+            </ul>
+        </div>
+        <?php
+        return ob_get_clean();
+    }
+
+    public static function render_period_stats($atts) {
+        $atts = shortcode_atts([
+            'period' => 'day'
+        ], $atts);
+
+        $data = self::$api->get_period_stats($atts['period']);
+
+        if (is_wp_error($data)) {
+            return sprintf('<div class="bw-error">%s</div>',
+                esc_html($data->get_error_message())
+            );
+        }
+
+        return sprintf(
+            '<div class="bw-stats">%s: %d detections across %d species</div>',
+            esc_html(ucfirst($atts['period'])),
+            esc_html($data['detections']),
+            esc_html($data['species'])
+        );
     }
 
     public static function render_location() {
@@ -80,6 +182,38 @@ class BirdWeather_Shortcodes {
                 border: 1px solid #ddd;
                 font-size: 1.1em;
                 color: #333;
+                margin: 10px 0;
+            }
+            .bw-species-list, .bw-detections-list {
+                background: #f8f9fa;
+                padding: 15px;
+                border-radius: 8px;
+                border: 1px solid #ddd;
+                margin: 10px 0;
+            }
+            .bw-species-list ul, .bw-detections-list ul {
+                list-style: none;
+                padding: 0;
+                margin: 10px 0;
+            }
+            .bw-species-item, .bw-detection-item {
+                display: flex;
+                justify-content: space-between;
+                padding: 8px;
+                border-bottom: 1px solid #eee;
+            }
+            .bw-species-item:last-child, .bw-detection-item:last-child {
+                border-bottom: none;
+            }
+            .species-count, .detection-time {
+                color: #666;
+                font-size: 0.9em;
+            }
+            .bw-error {
+                color: #dc3545;
+                padding: 10px;
+                border: 1px solid currentColor;
+                border-radius: 4px;
                 margin: 10px 0;
             }
         ');
