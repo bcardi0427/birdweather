@@ -8,6 +8,7 @@ Author: Gerald Haygood</p>
 <h2>Installation</h2>
 
 <ol>
+    <li>Press the green code button and download the zip, install that like any other plugin
     <li>Upload the plugin files to <code>/wp-content/plugins/birdweather/</code></li>
     <li>Activate the plugin through the 'Plugins' menu in WordPress</li>
     <li>Go to Settings > BirdWeather to:
