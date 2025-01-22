@@ -9,7 +9,9 @@ A WordPress plugin for displaying BirdWeather station data using shortcodes.
 
 1. Upload the plugin files to `/wp-content/plugins/birdweather/`
 2. Activate the plugin through the 'Plugins' menu in WordPress
-3. Go to Settings > BirdWeather to configure your station token
+3. Go to Settings > BirdWeather to:
+   - Configure your station token
+   - Enable/disable debug mode (helps with troubleshooting)
 
 ## Shortcodes
 

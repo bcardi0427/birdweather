@@ -1,10 +1,5 @@
 <?php
 class BirdWeather_Settings {
-    private static $options = [
-        'bw_station_token' => '',
-        'bw_enable_debug' => false
-    ];
-
     public static function init() {
         // Settings are now registered in BirdWeather class
     }
@@ -25,18 +20,21 @@ class BirdWeather_Settings {
     }
 
     public static function render_section_header() {
-        echo '<p>' . esc_html__('Enter your BirdWeather station token below. You can find this in your station settings.', 'birdweather') . '</p>';
+        echo '<p>' . esc_html__('Configure your BirdWeather integration settings below.', 'birdweather') . '</p>';
     }
 
     public static function render_token_field() {
-        $value = get_option(self::$option_name);
+        $value = get_option('bw_station_token');
         ?>
         <input type="text"
-            id="<?php echo esc_attr(self::$option_name); ?>"
-            name="<?php echo esc_attr(self::$option_name); ?>"
+            id="bw_station_token"
+            name="bw_station_token"
             value="<?php echo esc_attr($value); ?>"
             class="regular-text"
         />
+        <p class="description">
+            <?php esc_html_e('Enter your BirdWeather station token. You can find this in your station settings.', 'birdweather'); ?>
+        </p>
         <?php
     }
 
@@ -111,11 +109,11 @@ class BirdWeather_Settings {
         // Test the token
         if (!BirdWeather_API_Client::test_token($token)) {
             add_settings_error(
-                self::$option_name,
+                'bw_station_token',
                 'invalid_token',
                 __('Could not verify token. Please try again.', 'birdweather')
             );
-            return get_option(self::$option_name);
+            return get_option('bw_station_token');
         }
 
         return $token;
