@@ -20,6 +20,8 @@ A WordPress plugin for displaying BirdWeather station data using shortcodes.
 ```shortcode
 [bw_location]
 ```
+![Screenshot 2025-01-22 125505](https://github.com/user-attachments/assets/423ee3cc-601c-4b43-8082-52f1dc9f288c)
+
 
 Displays today's overall detection statistics for your station.
 
@@ -30,6 +32,8 @@ Displays today's overall detection statistics for your station.
 ```shortcode
 [bw_observations limit="5" show_scientific="true" show_thumbnails="true"]
 ```
+![Screenshot 2025-01-22 125518](https://github.com/user-attachments/assets/a8f99527-56aa-45f2-828d-df01856fda4a)
+
 
 Shows detailed bird observations with optional scientific names and thumbnails.
 
@@ -42,6 +46,8 @@ Shows detailed bird observations with optional scientific names and thumbnails.
 ```shortcode
 [bw_top_species period="day" limit="10" sort="top" order="desc"]
 ```
+![Screenshot 2025-01-22 125540](https://github.com/user-attachments/assets/e1c81e4c-7351-407b-b33d-eacdc79c585f)
+
 
 Displays the most frequently detected species.
 
@@ -55,6 +61,8 @@ Displays the most frequently detected species.
 ```shortcode
 [bw_recent_detections limit="10" species=""]
 ```
+![Screenshot 2025-01-22 125556](https://github.com/user-attachments/assets/dc81905b-fad4-4fde-a5ad-3d17a37899b7)
+
 
 Shows the most recent bird detections.
 
@@ -66,6 +74,8 @@ Shows the most recent bird detections.
 ```shortcode
 [bw_period_stats period="day"]
 ```
+![Screenshot 2025-01-22 125609](https://github.com/user-attachments/assets/904241a5-3967-4b12-8706-ec57a248ec86)
+
 
 Shows detection statistics for a specific time period.
 
