@@ -75,4 +75,4 @@ Author: Gerald Haygood</p>
 <h3>Show monthly statistics:</h3>
 <pre><code>[bw_period_stats period="month"]</code></pre>
 
-<h4>BirdWeather is at <a="https://www.birdweather.com" target="_blank"/a>https://www.birdweather.com<h4>
+<h4>BirdWeather is at <a href="https://www.birdweather.com" target="_blank" rel="noopener noreferrer">https://www.birdweather.com</a></h4>
