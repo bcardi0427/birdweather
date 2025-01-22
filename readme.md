@@ -1,78 +1,76 @@
-# BirdWeather WordPress Plugin
+<h1>BirdWeather WordPress Plugin</h1>
 
-Version: 1.0.0
-Author: Gerald Haygood
+<p>Version: 1.0.0<br>
+Author: Gerald Haygood</p>
 
-A WordPress plugin for displaying BirdWeather station data using shortcodes.
+<p>A WordPress plugin for displaying BirdWeather station data using shortcodes.</p>
 
-## Installation
+<h2>Installation</h2>
 
-1. Upload the plugin files to `/wp-content/plugins/birdweather/`
-2. Activate the plugin through the 'Plugins' menu in WordPress
-3. Go to Settings > BirdWeather to:
-   - Configure your station token
-   - Enable/disable debug mode (helps with troubleshooting)
+<ol>
+    <li>Upload the plugin files to <code>/wp-content/plugins/birdweather/</code></li>
+    <li>Activate the plugin through the 'Plugins' menu in WordPress</li>
+    <li>Go to Settings > BirdWeather to:
+        <ul>
+            <li>Configure your station token</li>
+            <li>Enable/disable debug mode (helps with troubleshooting)</li>
+        </ul>
+    </li>
+</ol>
 
-## Shortcodes
+<h2>Shortcodes</h2>
 
-### Station Stats
-```
-[bw_location]
-```
-Displays today's overall detection statistics for your station.
-- Output: Shows total number of detections and unique species for the day
+<h3>Station Stats</h3>
+<pre><code>[bw_location]</code></pre>
+<p>Displays today's overall detection statistics for your station.</p>
+<ul>
+    <li>Output: Shows total number of detections and unique species for the day</li>
+</ul>
 
-### Bird Observations
-```
-[bw_observations limit="5" show_scientific="true" show_thumbnails="true"]
-```
-Shows detailed bird observations with optional scientific names and thumbnails.
-- `limit`: Number of observations to display (default: 7)
-- `show_scientific`: Whether to show scientific names (true/false, default: false)
-- `show_thumbnails`: Whether to show bird thumbnails (true/false, default: false)
+<h3>Bird Observations</h3>
+<pre><code>[bw_observations limit="5" show_scientific="true" show_thumbnails="true"]</code></pre>
+<p>Shows detailed bird observations with optional scientific names and thumbnails.</p>
+<ul>
+    <li><code>limit</code>: Number of observations to display (default: 7)</li>
+    <li><code>show_scientific</code>: Whether to show scientific names (true/false, default: false)</li>
+    <li><code>show_thumbnails</code>: Whether to show bird thumbnails (true/false, default: false)</li>
+</ul>
 
-### Top Species
-```
-[bw_top_species period="day" limit="10" sort="top" order="desc"]
-```
-Displays the most frequently detected species.
-- `period`: Time period to show stats for (day/week/month, default: day)
-- `limit`: Number of species to show (default: 10)
-- `sort`: How to sort results (top/common_name/scientific_name, default: top)
-- `order`: Sort direction (asc/desc, default: desc)
+<h3>Top Species</h3>
+<pre><code>[bw_top_species period="day" limit="10" sort="top" order="desc"]</code></pre>
+<p>Displays the most frequently detected species.</p>
+<ul>
+    <li><code>period</code>: Time period to show stats for (day/week/month, default: day)</li>
+    <li><code>limit</code>: Number of species to show (default: 10)</li>
+    <li><code>sort</code>: How to sort results (top/common_name/scientific_name, default: top)</li>
+    <li><code>order</code>: Sort direction (asc/desc, default: desc)</li>
+</ul>
 
-### Recent Detections
-```
-[bw_recent_detections limit="10" species=""]
-```
-Shows the most recent bird detections.
-- `limit`: Number of detections to show (default: 10)
-- `species`: Filter by species name (optional)
+<h3>Recent Detections</h3>
+<pre><code>[bw_recent_detections limit="10" species=""]</code></pre>
+<p>Shows the most recent bird detections.</p>
+<ul>
+    <li><code>limit</code>: Number of detections to show (default: 10)</li>
+    <li><code>species</code>: Filter by species name (optional)</li>
+</ul>
 
-### Period Statistics
-```
-[bw_period_stats period="day"]
-```
-Shows detection statistics for a specific time period.
-- `period`: Time period to show stats for (day/week/month, default: day)
+<h3>Period Statistics</h3>
+<pre><code>[bw_period_stats period="day"]</code></pre>
+<p>Shows detection statistics for a specific time period.</p>
+<ul>
+    <li><code>period</code>: Time period to show stats for (day/week/month, default: day)</li>
+</ul>
 
-## Examples
+<h2>Examples</h2>
 
-Display today's top 5 species:
-```
-[bw_top_species limit="5"]
-```
+<h3>Display today's top 5 species:</h3>
+<pre><code>[bw_top_species limit="5"]</code></pre>
 
-Show recent detections of a specific species:
-```
-[bw_recent_detections limit="5" species="Eastern Bluebird"]
-```
+<h3>Show recent detections of a specific species:</h3>
+<pre><code>[bw_recent_detections limit="5" species="Eastern Bluebird"]</code></pre>
 
-Display detailed observations with scientific names:
-```
-[bw_observations limit="10" show_scientific="true"]
-```
+<h3>Display detailed observations with scientific names:</h3>
+<pre><code>[bw_observations limit="10" show_scientific="true"]</code></pre>
 
-Show monthly statistics:
-```
-[bw_period_stats period="month"]
+<h3>Show monthly statistics:</h3>
+<pre><code>[bw_period_stats period="month"]</code></pre>
