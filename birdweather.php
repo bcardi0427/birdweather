@@ -2,7 +2,7 @@
 /**
  * Plugin Name: BirdWeather Integration
  * Description: Display BirdWeather station data in WordPress
- * Version: 1.0.0
+ * Version: 2.0.0
  * Author: Gerald Haygood
  * Text Domain: birdweather
  */
@@ -11,7 +11,7 @@
 defined('ABSPATH') || exit;
 
 // Define plugin constants
-define('BW_VERSION', '1.0.0');
+define('BW_VERSION', '2.0.0');
 define('BW_PLUGIN_DIR', plugin_dir_path(__FILE__));
 define('BW_PLUGIN_URL', plugin_dir_url(__FILE__));
 
