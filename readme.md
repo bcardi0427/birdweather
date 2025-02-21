@@ -20,6 +20,7 @@ A WordPress plugin for displaying BirdWeather station data using shortcodes.
 ```shortcode
 [bw_location]
 ```
+![Screenshot 2025-01-22 125540](https://github.com/user-attachments/assets/e1c81e4c-7351-407b-b33d-eacdc79c585f)```
 
 Displays today's overall detection statistics for your station.
 
