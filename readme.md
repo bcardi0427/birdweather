@@ -46,6 +46,7 @@ Shows detailed bird observations with optional scientific names and thumbnails.
 ```shortcode
 [bw_top_species period="day" limit="10" sort="top" order="desc"]
 ```
+![Screenshot 2025-02-21 083856](https://github.com/user-attachments/assets/29b751fa-7ab3-44a5-995a-1863333df8fa)
 
 Displays the most frequently detected species.
 
@@ -59,6 +60,8 @@ Displays the most frequently detected species.
 ```shortcode
 [bw_recent_detections limit="10" species=""]
 ```
+![Screenshot 2025-02-21 084143](https://github.com/user-attachments/assets/cca6deec-f0d5-4952-a447-70a1a305d660)
+
 
 Shows the most recent bird detections.
 
